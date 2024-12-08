@@ -1,6 +1,6 @@
 // symbol, bigint
 
-let id: symbol = Symbol("id");
+let id: symbol = Symbol('id');
 
 const data = {
   [id]: 1,
@@ -11,3 +11,4 @@ const data = {
 const num1: bigint = 1n;
 const num2: bigint = 2n;
 console.log(num1 + num2);
+export {};

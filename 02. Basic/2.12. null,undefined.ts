@@ -11,9 +11,10 @@ function getRandomData() {
   if (Math.random() < 0.5) {
     return null;
   } else {
-    return "  Some data  ";
+    return '  Some data  ';
   }
 }
 
 const data = getRandomData();
 const trimmedData = data ? data.trim() : null;
+export {};

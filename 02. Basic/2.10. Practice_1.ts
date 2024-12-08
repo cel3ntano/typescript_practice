@@ -1,4 +1,4 @@
-const currRate: string = "1.05";
+const currRate: string = '1.05';
 
 const fetchCurr = (response: string): number => {
   const data: number = JSON.parse(response);
@@ -14,8 +14,9 @@ function transferEurToUsd(
     let res: number = fetchCurr(currRate) * amount * commission;
     console.log(res);
   } else {
-    console.log("Exchange unavailable");
+    console.log('Exchange unavailable');
   }
 }
 
 transferEurToUsd(true, 500, 1.05);
+export {};

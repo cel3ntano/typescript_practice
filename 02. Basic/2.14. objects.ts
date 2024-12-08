@@ -1,9 +1,9 @@
 const userData = {
   isBirthdayData: true,
   ageData: 40,
-  userNameData: "John",
-  someKey: "someValue",
-  messages: { error: "Error" },
+  userNameData: 'John',
+  someKey: 'someValue',
+  messages: { error: 'Error' },
 };
 
 const createError = (msg: string) => {
@@ -29,3 +29,4 @@ function logBrtMsg({
 }
 
 console.log(logBrtMsg(userData));
+export {};

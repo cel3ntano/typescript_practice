@@ -1,9 +1,9 @@
-const departments: string[] = ["dev", "design", "marketing"];
+const departments: string[] = ['dev', 'design', 'marketing'];
 const department = departments[0];
 // departments.push(5); // error
 
 const report = departments
-  .filter((dept: string) => dept !== "dev")
+  .filter((dept: string) => dept !== 'dev')
   .map((dept: string) => `${dept} - done`);
 
 const nums: number[][] = [
@@ -12,4 +12,5 @@ const nums: number[][] = [
 ];
 
 const [first] = report;
-console.log("first: ", first);
+console.log('first: ', first);
+export {};
