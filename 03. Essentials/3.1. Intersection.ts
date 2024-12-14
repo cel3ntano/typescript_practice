@@ -41,24 +41,4 @@ const startServer: StartFunction = (
 
 startServer(serverConfig.protocol, serverConfig.port);
 
-type AnimationTimingFunc = 'ease' | 'ease-out' | 'ease-in';
-type AnimationId = string | number;
-
-function createAnimation(
-  id: AnimationId,
-  animationName: string,
-  timingFunc: AnimationTimingFunc = 'ease',
-  duration: number,
-  iterCount: 'infinite' | number
-): void {
-  const elem = document.querySelector(`#${id}`) as HTMLElement;
-
-  if (elem) {
-    console.log(`${animationName} ${timingFunc} ${duration} ${iterCount}`);
-    elem.style.animation = `${animationName} ${timingFunc} ${duration} ${iterCount}}`;
-  }
-}
-
-createAnimation('id', 'fade', 'ease', 5, 'infinite');
-
 export {};
