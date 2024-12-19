@@ -52,5 +52,21 @@ function printReport(data: TotalWarehouse): string {
   }
 }
 
+// function printReport(totalData: TotalWarehouse): string {
+//   const emptyItems: string[] = [];
+//   for (const key in totalData) {
+//     if (Object.prototype.hasOwnProperty.call(totalData, key)) {
+//       const typedKey = key as keyof TotalWarehouse;
+//       if (typedKey === 'deficit' || typedKey === 'date') continue;
+//       if (totalData[typedKey] === 'empty') {
+//         emptyItems.push(typedKey);
+//       }
+//     }
+//   }
+//   return emptyItems.length
+//     ? `We need following items: ${emptyItems.join(', ')}`
+//     : 'Everything is fine';
+// }
+
 console.log(printReport(totalData));
 export {};
