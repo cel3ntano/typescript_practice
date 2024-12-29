@@ -11,15 +11,15 @@ type Role = {
   role: string;
 };
 
-type CongifWithRole = Config & Role;
+type ConfigWithRole = Config & Role;
 
-const serverConfig: CongifWithRole = {
+const serverConfig: ConfigWithRole = {
   protocol: 'https',
   port: 3001,
   role: 'admin',
 };
 
-const backupCongig: CongifWithRole = {
+const backupCongig: ConfigWithRole = {
   protocol: 'http',
   port: 3000,
   role: 'sysadmin',
