@@ -1,51 +1,78 @@
-enum TypesOfMedia {
-  Video = 'video',
-  Audio = 'audio',
-}
+namespace Media {
+  export enum Type {
+    Video = 'video',
+    Audio = 'audio',
+  }
 
-enum FormatsOfMedia {
-  MP4 = '.mp4',
-  MOV = '.mov',
-  MKV = '.mkv',
-  FLV = '.flv',
-  WEBM = '.webM',
-}
+  export enum Format {
+    MP4 = '.mp4',
+    MOV = '.mov',
+    MKV = '.mkv',
+    FLV = '.flv',
+    WEBM = '.webm',
+  }
 
-interface MediaProps {
-  name: string;
-  type: TypesOfMedia;
-  format: FormatsOfMedia;
-  subtitles?: string;
-  marks?: unknown;
-}
+  export type TimeMarkType = string;
+  export type MarksType = TimeMarkType[] | string;
 
-function playMedia(
-  { name, type, format, subtitles, marks }: MediaProps = {
+  export interface Props {
+    name: string;
+    type: Type;
+    format: Format;
+    subtitles?: string;
+    marks?: MarksType;
+  }
+
+  export const DEFAULT_CONFIG: Props = {
     name: 'example',
-    type: TypesOfMedia.Video,
-    format: FormatsOfMedia.MP4,
-  }
-): string {
-  let marksLog: string;
-  if (Array.isArray(marks)) {
-    marksLog = marks.join(' ');
-  } else if (typeof marks === 'string') {
-    marksLog = marks;
-  } else {
-    marksLog = 'Unsupported type of marks';
-  }
-
-  console.log(`Media ${name}${format} is ${type}
-    Marks: ${marksLog}
-    Subtitles: ${subtitles ?? 'none'}`);
-
-  return 'Media started';
+    type: Type.Video,
+    format: Format.MP4,
+  };
 }
 
-playMedia({
+class MediaPlayer {
+  private static formatMarks(marks?: Media.MarksType): string {
+    if (!marks) return 'none';
+
+    if (Array.isArray(marks)) {
+      return marks.join(' ');
+    }
+
+    if (typeof marks === 'string') {
+      return marks;
+    }
+
+    return 'Unsupported type of marks';
+  }
+
+  private static formatSubtitles(subtitles?: string): string {
+    return subtitles ?? 'none';
+  }
+
+  static play(props: Media.Props = Media.DEFAULT_CONFIG): string {
+    const { name, format, type, subtitles, marks } = props;
+
+    const mediaInfo = {
+      title: `${name}${format}`,
+      type,
+      marks: this.formatMarks(marks),
+      subtitles: this.formatSubtitles(subtitles),
+    };
+
+    console.log(
+      `Media ${mediaInfo.title} is ${mediaInfo.type}
+      Marks: ${mediaInfo.marks}
+      Subtitles: ${mediaInfo.subtitles}`
+    );
+
+    return 'Media started';
+  }
+}
+
+MediaPlayer.play({
   name: 'WoW',
-  format: FormatsOfMedia.MOV,
-  type: TypesOfMedia.Video,
+  format: Media.Format.MOV,
+  type: Media.Type.Video,
   subtitles: 'hmhmhm hmhmhm doh',
   marks: ['4:30', '5:40'],
 });
